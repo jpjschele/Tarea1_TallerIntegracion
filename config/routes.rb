@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
  
+  get 'pages/index'
+
   devise_for :adms
   get 'welcome/index'
   root 'welcome#index'
