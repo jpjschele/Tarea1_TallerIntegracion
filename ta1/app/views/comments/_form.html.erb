@@ -1,0 +1,16 @@
+<%= form_for([@article,@comment]) do |form| %>
+  
+  <div class="field">
+    <%= form.label :Nombre %>
+    <%= form.text_field :name, id: :comment_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cuerpo %>
+    <%= form.text_area :body, id: :comment_body %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

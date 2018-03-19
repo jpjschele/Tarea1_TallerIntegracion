@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ta1</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+
+    	<nav class= "be-red white large-padding">
+    		<ul class= "no-list row center-xs">
+    			<li class= "col-md">
+    				<%= link_to "Inicio", root_path %>
+    			</li>
+    		
+    		<% if adm_signed_in? %>
+    			<li class= "col-md">
+    				<%= link_to "Crear Noticia", new_article_path %>
+    			</li>
+    			
+    			<li class= "col-md">
+    				<%= link_to "Administrar Todas las Noticias", articles_path %>
+    			</li>
+    			<li class= "col-md">
+    				<%= link_to "Cerrar Sesión", destroy_adm_session_path, method: :delete%>
+    			</li>
+    		<% else %>
+    			<li class= "col-md">
+    				<%= link_to "Iniciar Sesión Administrador", new_adm_session_path %>
+    			</li>
+    		<% end %>
+    		</ul>
+    	</nav>
+   		<p class="notice"><%= notice %></p>
+    	<p class="alert"><%= alert %></p>
+   	
+    <%= yield %>
+  </body>
+</html>

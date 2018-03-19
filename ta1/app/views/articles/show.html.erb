@@ -1,0 +1,36 @@
+<div class="row center-xs" style="border: 1px solid black">
+  <div class="col-xs-8 col-md-6">
+  	<h1 class="be-red white large-padding"><%= @article.title %></h1>
+		<div class ="field">
+			<h2><%= @article.down %> </h2>
+		</div>
+		<div class ="field">
+			<%= @article.body %>
+		</div>
+		<div class="field">
+			fecha de creacion:
+			<%= @article.created_at %>
+		</div>
+		<div class ="field">
+			<h3>Comentarios:</h3>
+			<ul>
+				<% @article.comments.each do |comment| %>
+				<li>
+					<%= comment.body %> - Escrito por: <%= comment.name %>
+	
+				</li>
+				<%end%>
+				<%= render "comments/form"%>
+				<h3>
+					Cantidad de comentarios: <%= @article.comments.count %>
+				</h3>
+			</ul>
+			
+
+		</div>
+		<% if adm_signed_in? %>
+			<%= link_to "Editar", edit_article_path(@article), class:"btn" %>
+			<%= link_to "Eliminar" , @article , method: :delete,class:"btn" %>
+		<%end%>
+	</div>
+</div>
